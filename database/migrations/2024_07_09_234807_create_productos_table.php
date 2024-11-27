@@ -21,7 +21,6 @@ return new class extends Migration
             $table->date('fecha_vencimiento')->nullable();
             $table->string('img_path',255)->nullable();
             $table->tinyInteger('estado')->default(1);
-            $table->foreignId('marca_id')->constrained('marcas')->onDelete('cascade');
             $table->string('numero_celular')->nullable();
             $table->string('nombre_del_producto')->nullable();
             $table->decimal('monto_interes',10,0,true)->nullable();

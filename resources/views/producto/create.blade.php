@@ -129,7 +129,9 @@ document.getElementById('cedula').addEventListener('change', function() {
     var cedula = this.value;
 
     if (cedula) {
-        fetch('/buscar-persona?cedula=' + cedula)
+        // Añadir un parámetro único para evitar problemas de caché
+        var uniqueParam = new Date().getTime();
+        fetch('/buscar-persona?cedula=' + cedula + '&t=' + uniqueParam)
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -163,7 +165,9 @@ document.getElementById('nombre').addEventListener('change', function() {
     var nombre = this.value;
 
     if (nombre) {
-        fetch('/buscar-por-nombre?nombre=' + nombre)
+        // Añadir un parámetro único para evitar problemas de caché
+        var uniqueParam = new Date().getTime();
+        fetch('/buscar-por-nombre?nombre=' + nombre + '&t=' + uniqueParam)
             .then(response => {
                 if (response.ok) {
                     return response.json();

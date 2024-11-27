@@ -59,3 +59,10 @@ Route::get('/500', function () {
     return view('pages.500');
 });
 
+
+
+
+use App\Http\Controllers\BoletaController;
+
+Route::post('/generar-boleta', [BoletaController::class, 'generarBoleta']);
+
