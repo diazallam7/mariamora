@@ -2,91 +2,67 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Routing\Controllers\HasMiddleware;
-use Illuminate\Routing\Controllers\Middleware;
-use App\Http\Requests\StorePersonaRequest;
-use App\Http\Requests\UpdateClienteRequest;
 use App\Models\Cliente;
-use App\Models\Documento;
-use App\Models\Producto;
-use App\Models\Persona;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
-class clienteController extends Controller implements HasMiddleware
+class ClienteController extends Controller
 {
-    public static function middleware(): array {
-
-        return [
-            
-          new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('ver-cliente|crear-cliente|editar-cliente|eliminar-cliente'),only:['index']),
-         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('crear-cliente'), only:['create','store']),
-         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('editar-cliente'),only:['edit','update']),
-         new Middleware(\Spatie\Permission\Middleware\PermissionMiddleware::using('eliminar-cliente'), only:['destroy']),
-        ];
-     }
-
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        // Obtener clientes sin nombres o cédulas repetidas
-        $clientes = Producto::select('nombre', 'descripcion', 'cedula', 'numero_celular')
-                            ->distinct('nombre', 'cedula')
-                            ->get();
-    
-        return view('cliente.index', compact('clientes'));
+        $clientes = Cliente::all();
+        return view('clientes.index', compact('clientes'));
     }
-    
 
-    // ClienteController.php
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('clientes.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StorePersonaRequest $request)
+    public function store(Request $request)
     {
-  //
+        $validated = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'telefono' => 'nullable|string|max:20',
+            'correo' => 'nullable|unique:clientes',
+            'direccion' => 'nullable|string|max:255',
+        ]);
+
+        Cliente::create($validated);
+        return redirect()->route('clientes.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function historial($clienteId)
     {
-        //
+        $cliente = Cliente::with('alquileres.vestido', 'reservas.vestido', 'ventas.vestido')->findOrFail($clienteId);
+        return view('clientes.historial', compact('cliente'));
+    }
+    
+
+
+    public function show(Cliente $cliente)
+    {
+        return view('clientes.show', compact('cliente'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Cliente $cliente)
     {
-       //
+        return view('clientes.edit', compact('cliente'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateClienteRequest $request, Cliente $cliente)
+    public function updateEstado($id)
     {
-//
+        $cliente = Cliente::findOrFail($id);
+        $cliente->estado = $cliente->estado == 1 ? 0 : 1;
+        $cliente->save();
+    
+        return redirect()->route('clientes.index')->with('success', 'Estado actualizado correctamente.');
     }
+    
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+
+    public function destroy(Cliente $cliente)
     {
-//
+        $cliente->delete();
+        return redirect()->route('clientes.index');
     }
 }

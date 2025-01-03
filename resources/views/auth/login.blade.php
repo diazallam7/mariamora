@@ -10,7 +10,7 @@
     <title>Inicio de Sesion</title>
     <link href="{{ asset('css/template.css') }}" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="{{ asset('express.ico') }}">
+    <link rel="icon" href="{{ asset('mm.ico') }}">
 </head>
 
 <body class="bg-primary">
@@ -70,7 +70,7 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                        <div class="text-muted">Copyright &copy; Allam Diaz-2025</div>
                         <div>
                             <a href="#">Privacy Policy</a>
                             &middot;

@@ -39,44 +39,24 @@
             <li class="breadcrumb-item active"></li>
         </ol>
         <div class="row mt-5">
-        <div class="col-xl-3 col-md-8">
-                <div class="card bg-primary text-white mb-4">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-8">
-                                <i class="fa-solid fa-wallet"></i><span class="m-1">Clientes</span>
-                            </div>
-                            <div class="col-4">
-                                <h6 class="text-primary">.</h6>
-                                <h6 class="text-primary">.</h6>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="{{ route('clientes.index') }}">Ver Mas</a>
-                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>
-                </div>
-            </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-warning text-white mb-4">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-8">
-                                <i class="fa-solid fa-cart-shopping"></i><span class="m-1">Compra</span>
+                                <i class="fa-solid fa-cart-shopping"></i><span class="m-1">Alquileres</span>
                             </div>
                             <div class="col-4">
                                 <?php
-                                use App\Models\Venta;
-                                $ventas = count(Venta::all());
+                                use App\Models\Alquiler;
+                                $ventas = count(Alquiler::all());
                                 ?>
                                 <p class="text-center fw-bold fs-4">{{ $ventas }}</p>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="{{ route('ventas.index') }}">Ver Mas</a>
+                        <a class="small text-white stretched-link" href="{{route('alquileres.index')}}">Ver Mas</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
@@ -86,44 +66,130 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-8">
-                                <i class="fa-solid fa-dollar-sign"></i><span class="m-1">Venta</span>
+                                <i class="fa-solid fa-pencil"></i><span class="m-1">Reportes</span>
+                            </div>
+                            <div class="col-4">
+                                <h6 class="text-success">.</h6>
+                                <h6 class="text-success">.</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="{{route('reportes.index')}}">Ver Mas</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-8">
+                                <i class="fa-solid fa-user-group"></i><span class="m-1">Clientes</span>
                             </div>
                             <div class="col-4">
                                 <?php
-                                use App\Models\Compra;
-                                $compras = count(Compra::all());
+                                use App\Models\Cliente;
+                                $ventas = count(Cliente::all());
+                                ?>
+                                <p class="text-center fw-bold fs-4">{{ $ventas }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="{{route('clientes.index')}}">Ver Mas</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-danger text-white mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-8">
+                                <i class="fa-solid fa-arrows-turn-to-dots"></i><span class="m-1">Devoluciones</span>
+                            </div>
+                            <div class="col-4">
+                                
+                                <h6 class="text-danger">.</h6>
+                                <h6 class="text-danger">.</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="{{route('devoluciones.index')}}">Ver Mas</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-danger text-white mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-8">
+                                <i class="fa-brands fa-shopify"></i><span class="m-1">Reservas</span>
+                            </div>
+                            <div class="col-4">
+                                <?php
+                                use App\Models\Reserva;
+                                $compras = count(Reserva::all());
                                 ?>
                                 <p class="text-center fw-bold fs-4">{{ $compras }}</p>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="{{ route('compras.index') }}">Ver Mas</a>
+                        <a class="small text-white stretched-link" href="{{route('reservas.index')}}">Ver Mas</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
-                <div class="card bg-secondary text-white mb-4">
+                <div class="card bg-primary text-white mb-4">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-8">
-                                <i class="fa-solid fa-copyright"></i><span class="m-1">Cierre Caja</span>
+                                <i class="fa-solid fa-dollar-sign"></i><span class="m-1">Ventas</span>
                             </div>
                             <div class="col-4">
-                                <h6 class="text-secondary">.</h6>
-                                <h6 class="text-secondary">.</h6>
+                                <?php
+                                use App\Models\Venta;
+                                $compras = count(Venta::all());
+                                ?>
+                                <p class="text-center fw-bold fs-4">{{ $compras }}</p>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="{{ route('compras.cierre_caja') }}">Ver Mas</a>
+                        <a class="small text-white stretched-link" href="{{route('ventas.index')}}">Ver Mas</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-success text-white mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-8">
+                                <i class="fa-solid fa-person-dress"></i><span class="m-1">Vestidos</span>
+                            </div>
+                            <div class="col-4">
+                                <?php
+                                use App\Models\Vestido;
+                                $compras = count(Vestido::all());
+                                ?>
+                                <p class="text-center fw-bold fs-4">{{ $compras }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="{{route('vestidos.index')}}">Ver Mas</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-warning text-white mb-4">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-8">
@@ -139,49 +205,7 @@
                         </div>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="{{ route('users.index') }}">Ver Mas</a>
-                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-warning text-white mb-4">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-8">
-                                <i class="fa-brands fa-shopify"></i><span class="m-1">Productos</span>
-                            </div>
-                            <div class="col-4">
-                                <?php
-                                use App\Models\Producto;
-                                $productos = count(Producto::all());
-                                ?>
-                                <p class="text-center fw-bold fs-4">{{ $productos }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="{{ route('productos.index') }}">Ver Mas</a>
-                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-8">
-                <div class="card bg-primary text-white mb-4">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-8">
-                                <i class="fa-solid fa-wallet"></i><span class="m-1">Pagos</span>
-                            </div>
-                            <div class="col-4">
-                                <h6 class="text-primary">.</h6>
-                                <h6 class="text-primary">.</h6>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="{{ route('interes.index') }}">Ver Mas</a>
+                        <a class="small text-white stretched-link" href="{{route('users.index')}}">Ver Mas</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>

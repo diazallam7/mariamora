@@ -9,15 +9,20 @@ class Cliente extends Model
 {
     use HasFactory;
 
-    public function persona(){
-        return $this->belongsTo(Persona::class);
+    protected $fillable = ['nombre', 'telefono', 'correo', 'direccion'];
+
+    public function alquileres()
+    {
+        return $this->hasMany(Alquiler::class);
     }
 
-    public function ventas(){
+    public function reservas()
+    {
+        return $this->hasMany(Reserva::class);
+    }
+
+    public function ventas()
+    {
         return $this->hasMany(Venta::class);
     }
-
-   protected $fillable = ['persona_id'];
-    
 }
-

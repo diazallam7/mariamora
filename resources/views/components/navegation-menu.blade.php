@@ -55,12 +55,10 @@
                             </div>--->
                 <div class="sb-sidenav-menu-heading">Modulos</div>
 
-                <a class="nav-link" href="{{ route('interes.index') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-wallet"></i></div>
-                    Pagos
+                <a class="nav-link" href="{{route('vestidos.index')}}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-person-dress"></i></div>
+                    Vestidos
                 </a>
-
-                @can('ver-compra')
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-dollar-sign"></i></div>
                     Ventas
@@ -69,39 +67,43 @@
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         
-                        <a class="nav-link" href="{{route('compras.index')}}">Ver</a>
+                        <a class="nav-link" href="{{route('ventas.index')}}">Ver</a>
                       
-                        <a class="nav-link" href="{{route('compras.create')}}">Crear</a>
+                        <a class="nav-link" href="{{route('ventas.create')}}">Crear</a>
                                                 
                     </nav>
                 </div>
-                @endcan
 
                 @can('ver-venta')
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseVenta" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-cart-shopping"></i></div>
-                    Compras
+                    Alquileres
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="collapseVenta" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         
-                        <a class="nav-link" href="{{route('ventas.index')}}">Ver</a>
-                        <a class="nav-link" href="{{route('ventas.create')}}">Crear</a>
+                        <a class="nav-link" href="{{route('alquileres.index')}}">Ver</a>
+                        <a class="nav-link" href="{{route('alquileres.create')}}">Crear</a>
                     </nav>
                 </div>
                 @endcan
                
              
                 @can('ver-producto')
-                <a class="nav-link" href="{{ route('productos.index') }}">
+                <a class="nav-link" href="{{route('reservas.index')}}">
                     <div class="sb-nav-link-icon"><i class="fa-brands fa-shopify"></i></i></div>
-                    Productos
+                    Reservas
                 </a>
                 @endcan
+
+                <a class="nav-link" href="{{route('devoluciones.index')}}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-arrows-turn-to-dots"></i></i></div>
+                    Devoluciones
+                </a>
                 
                 @can('ver-cliente')
-                <a class="nav-link" href="{{ route('clientes.index') }}">
+                <a class="nav-link" href="{{route('clientes.index')}}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-user-group"></i></i></div>
                     Clientes
                 </a>     
@@ -117,15 +119,21 @@
                 @endcan
                  
             
-                <a class="nav-link" href="{{ route('roles.index') }}">
+                <!--<a class="nav-link" href="{{ route('roles.index') }}">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-shield-halved"></i></i></div>
                     Roles
-                </a> 
+                </a> -->
 
-                <a class="nav-link" href="{{ route('compras.cierre_caja') }}">
-                    <div class="sb-nav-link-icon"><i class="fa-solid fa-copyright"></i></div>
-                    Cierre de Caja del dia
+                <a class="nav-link" href="{{route('reportes.index')}}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-pencil"></i></div>
+                    Reportes y Estadisticas
                 </a>
+
+                <a class="nav-link" href="{{ route('configuraciones.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-gear"></i></div>
+                    Configuración de Multas
+                </a>
+                
 
                      
             </div>
